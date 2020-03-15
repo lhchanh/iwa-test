@@ -1,0 +1,16 @@
+.nested-fields.option-nested-fields
+  .form-row.align-items-center.mt-15
+    .col-auto.col-9
+      .input-group.input-group-option
+        .input-group-prepend
+          .input-group-text= f.object.id
+        = f.text_field :answer, class: 'form-control', placeholder: 'Give the answer of the question here ...'
+        - if f.object.errors[:answer].any?
+          span.error.error-option= f.object.errors[:answer].join(', ')
+    .col-auto.col
+      .form-check
+        = f.check_box :correct, class: 'form-check-input', type: 'radio'
+        label.form-check-label for="exampleRadios1"
+          | Correct Answer
+    .col-auto.col.btn-remove
+      = link_to_remove_association "Remove", f

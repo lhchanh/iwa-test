@@ -1,0 +1,41 @@
+.card.form-style
+  .card-header
+    nav.navbar-expand-lg.navbar-light.bg-light
+      #navbarTogglerDemo01.collapse.navbar-collapse
+        .navbar-nav.mr-auto.mt-2.mt-lg-0
+          = link_to tests_path do
+            button.btn.button_icon.btn-light.mr-10
+              i.fa.fa-arrow-left
+              | Back
+          button.btn.button_icon.btn-primary type="submit"
+            i.fa.fa-save
+            | Save
+        .form-inline.my-2.my-lg-0
+          button.btn.button_icon.btn-primary.mr-10.add-new-question type="button"
+            i.fa.fa-plus
+            | Question
+  .card-body
+    .form-group.row
+      .col-sm-2.col-form-label.col-form-label-sm
+        = test_form.label :name
+      .col-sm-10
+        = test_form.text_field :name, class: 'form-control', placeholder: 'Give the Test a name here ...'
+        - if test_form.object.errors[:name].any?
+          span.error= test_form.object.errors[:name].join(', ')
+    .form-group.row
+      .col-sm-2.col-form-label.col-form-label-sm
+        = test_form.label :description
+      .col-sm-10
+        = test_form.text_area :description, class: 'form-control', placeholder: 'Enter a description here ...'
+        - if test_form.object.errors[:description].any?
+          span.error= test_form.object.errors[:description].join(', ')
+    hr
+    #questions_form
+      = test_form.fields_for :questions do |question|
+        = render 'question_fields', f: question
+      .links.add-question-btn.hidden
+        = link_to_add_association 'Question', test_form, :questions
+
+      - if test_form.object.errors[:questions].any?
+        .form-group.error.question-missing-error
+          = test_form.object.errors.full_messages.first

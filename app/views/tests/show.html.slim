@@ -1,0 +1,66 @@
+.container
+  = render 'shared/nav'
+
+  .card.form-style
+    .card-header
+      = link_to tests_path do
+        button.btn.btn-light.button_icon.mr-10
+          i.fa.fa-arrow-left
+          | Back
+
+      = link_to edit_test_path(@test) do
+        button.btn.btn-secondary.button_icon.mr-10
+          i.fa.fa-pencil
+          | Edit
+
+      = link_to test_path(@test), method: :delete, data:{ confirm: 'Are you sure you want to delete this test?' } do
+        button.btn.btn-primary.button_icon
+          i.fa.fa-trash
+          | Delete
+
+    .card-body
+      .form-group.row
+        label class='col-sm-2 col-form-label col-form-label-sm'
+          | Name
+        .col-sm-10
+          = @test.name
+      .form-group.row
+        label class='col-sm-2 col-form-label col-form-label-sm'
+          | Description
+        .col-sm-10
+          = @test.description
+      hr
+      .form-group.row
+        label class='col-sm-2 col-form-label col-form-label-sm'
+          | Question
+        .col-sm-10
+          - @test.questions.includes(:options).each do |question|
+            hr
+            .row.mt-15
+              .col-sm-12
+                = "ID: #{question.id}"
+            .row.mt-15
+              .col-sm-12
+                = "Label: #{question.label}"
+            .row.mt-15
+              .col-sm-12
+                = "Description: #{question.description}"
+            .row.mt-15
+              .col-sm-12
+                table.table.table-bordered
+                  thead
+                    tr
+                      th scope="col"  #
+                      th scope="col"  Answer
+                      th scope="col"  Correct
+                  tbody
+                    - question.options.each do |option|
+                      tr
+                        td = option.id
+                        td = option.answer
+                        td = option.correct? ? 'YES' : 'NO'
+
+
+
+
+

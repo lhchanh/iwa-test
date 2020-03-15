@@ -1,0 +1,4 @@
+.container
+  = render 'shared/nav'
+  = form_for @test, url: tests_path  do |test_form|
+      = render partial: 'form', locals: { test_form: test_form }

@@ -1,0 +1,7 @@
+.container
+  = render 'shared/nav'
+
+  = form_for @user, url: {action: "update"}  do |user_form|
+    = render partial: 'form', locals: { user_form: user_form }
+
+

@@ -1,0 +1,13 @@
+.container
+  = render 'shared/nav'
+
+  = render 'shared/flash_message'
+
+  div style="margin: 15px 0;"
+    = link_to new_user_path do
+      button.btn.button_icon.btn-primary.mr-10
+        i.fa.fa-plus
+        | New User
+
+  #users_list
+    = render partial: 'table', locals: { users: @users }

@@ -1,0 +1,49 @@
+.card.form-style
+  .card-header
+    = link_to users_path do
+      button.btn.button_icon.btn-light.mr-10
+        i.fa.fa-arrow-left
+        | Back
+    button.btn.button_icon.btn-primary type="submit"
+      i.fa.fa-save
+      | Save
+  .card-body
+    .form-group.row
+      .col-sm-2.col-form-label.col-form-label-sm
+        = user_form.label :name
+      .col-sm-10
+        = user_form.text_field :name, name: 'user[name]', class: 'form-control'
+        - if user_form.object.errors[:name].any?
+          span.error= user_form.object.errors[:name].join(', ')
+
+    .form-group.row
+      .col-sm-2.col-form-label.col-form-label-sm
+        = user_form.label :email
+      .col-sm-10
+        = user_form.text_field :email, name: 'user[email]', class: 'form-control'
+        - if user_form.object.errors[:email].any?
+          span.error= user_form.object.errors[:email].join(', ')
+
+    .form-group.row
+      .col-sm-2.col-form-label.col-form-label-sm
+        = user_form.label :password
+      .col-sm-10
+        = user_form.password_field :password, name: 'user[password]', class: 'form-control'
+        - if user_form.object.errors[:password].any?
+          span.error= user_form.object.errors[:password].join(', ')
+
+    .form-group.row
+      .col-sm-2.col-form-label.col-form-label-sm
+        = user_form.label 'Confirm Password'
+      .col-sm-10
+        = user_form.password_field :password_confirmation, name: 'user[password_confirmation]', class: 'form-control'
+        - if user_form.object.errors[:password_confirmation].any?
+          span.error= user_form.object.errors[:password_confirmation].join(', ')
+
+    .form-group.row
+      .col-sm-2.col-form-label.col-form-label-sm
+        = user_form.label 'Role'
+      .col-sm-10
+        = user_form.select :type, options_for_select(User::ROLES, :selected => user_form.object.type), {:include_blank => true}, name: 'user[type]', class: 'form-control'
+        - if user_form.object.errors[:type].any?
+          span.error= user_form.object.errors[:type].join(', ')

@@ -1,0 +1,25 @@
+.container
+  = render 'shared/flash_message'
+  .card.mt-15
+    .card-header= t('.sign_in')
+    = form_for(resource, as: resource_name, url: session_path(resource_name)) do |f|
+      .card-body
+        .form-group.row
+          = f.label :email, class: 'col-sm-2 col-form-label col-form-label-sm'
+          .col-sm-10
+            = f.email_field :email, autofocus: true, autocomplete: 'email', class: 'form-control'
+        .form-group.row
+          = f.label :password, class: 'col-sm-2 col-form-label col-form-label-sm'
+          .col-sm-10
+            = f.password_field :password, autocomplete: 'current-password', class: 'form-control'
+        - if devise_mapping.rememberable?
+          .form-group
+            .form-check.row
+              label.col-sm-2 for="colFormLabelSm"
+              .col-sm-10
+                = f.check_box :remember_me, class: 'form-check-input'
+                = f.label :remember_me, class: 'form-check-label' do
+                  = resource.class.human_attribute_name('remember_me')
+      .card-footer
+        = f.submit  t('.sign_in'), class: 'btn btn-primary'
+

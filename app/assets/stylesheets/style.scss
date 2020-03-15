@@ -1,0 +1,93 @@
+.button_icon{
+  i{
+    margin-right: 10px;
+  }
+}
+
+.form-style{
+  margin: 15px 0;
+}
+
+.mr-10{
+  margin-right: 10px;
+}
+
+.mtop-5{
+  margin-top: 5px;
+}
+
+.mt-15{
+  margin-top: 15px;
+}
+
+.mb-15{
+  margin-bottom: 15px;
+}
+
+.error{
+  color: #dc3545;
+  font-size: 12px;
+  margin-top: 5px;
+}
+
+.error-option{
+  width: 100%;
+  display: block;
+}
+
+.input-group-option{
+  .field_with_errors{
+    flex: 1;
+  }
+}
+
+.field_with_errors{
+  label{
+    color: #dc3545;
+  }
+
+  input, textarea {
+    border-color: #dc3545;
+  }
+}
+
+.btn-remove{
+  a{
+    @extend .btn;
+    @extend .btn-light;
+    &:before{
+      font: normal normal normal 14px/1 FontAwesome;
+      content: "\f1f8";
+      margin-right: 10px;
+    }
+  }
+}
+
+.btn-remove-q{
+  margin-top: 6px;
+}
+
+.remove-bg{
+  background-color: #fff;
+  border: none;
+}
+
+.add-question-btn{
+  display: none;
+}
+
+.add-option-btn{
+  a{
+    @extend .btn;
+    @extend .btn-primary;
+    &:before{
+      font: normal normal normal 14px/1 FontAwesome;
+      content: "\f067";
+      margin-right: 10px;
+    }
+  }
+}
+
+.question-nested-fields{
+  margin: 60px auto;
+}
