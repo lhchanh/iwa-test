@@ -12,5 +12,5 @@
         = f.check_box :correct, class: 'form-check-input', type: 'radio'
         label.form-check-label for="exampleRadios1"
           | Correct Answer
-    .col-auto.col.btn-remove
-      = link_to_remove_association "Remove", f
+    .col-auto.col
+      = link_to_remove_association "Remove", f, class: 'btn btn-light btn-remove'

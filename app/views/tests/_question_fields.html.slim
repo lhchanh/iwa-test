@@ -5,8 +5,8 @@
       - if f.object.errors[:label].any?
         span.error= f.object.errors[:label].join(', ')
 
-    .col-sm-2.btn-remove.btn-remove-q
-      = link_to_remove_association "remove", f
+    .col-sm-2
+      = link_to_remove_association "Remove",f , class: 'btn btn-light btn-remove btn-remove-q'
 
   .form-group.row
     .col-sm-12
@@ -16,8 +16,8 @@
   #tasks.options-group
     = f.fields_for :options do |option|
       = render 'option_fields', f: option
-    .links.add-option-btn.mt-15.mb-15
-      = link_to_add_association 'Option', f, :options
+    .links.mt-15.mb-15
+      = link_to_add_association 'Option', f, :options, class: 'add-option-btn btn btn-primary'
 
     - if f.object.errors[:options].any?
         .form-group.error.question-missing-error
