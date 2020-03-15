@@ -53,8 +53,30 @@
 
 .btn-remove{
   a{
-    @extend .btn;
-    @extend .btn-light;
+    text-decoration: none;
+    display: inline-block;
+    font-weight: 400;
+    color: #212529;
+    text-align: center;
+    vertical-align: middle;
+    cursor: pointer;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    border: 1px solid transparent;
+    padding: 0.375rem 0.75rem;
+    font-size: 1rem;
+    line-height: 1.5;
+    border-radius: 0.25rem;
+    -webkit-transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+    transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+    color: #fff;
+    background-color: #007bff;
+    border-color: #007bff;
+    color: #212529;
+    background-color: #f8f9fa;
+    border-color: #f8f9fa;
     &:before{
       font: normal normal normal 14px/1 FontAwesome;
       content: "\f1f8";
