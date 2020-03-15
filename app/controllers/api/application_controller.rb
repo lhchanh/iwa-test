@@ -5,7 +5,9 @@ module Api
     PER_PAGE_DEFAULT = 10
 
     before_action :ensure_params_token
-    before_action :authorize_user!
+    before_action :load_user_by_token
+    before_action :authenticate_user_from_token!
+    before_action :authenticate_user!
 
     private
 
@@ -13,11 +15,15 @@ module Api
       return response_error(message: "Invalid token") if params[:auth_token].blank?
     end
 
-    def authorize_user!
-      return response_error(nil, message: 'Unauthorized user', code: :unauthorized) if current_user.blank?
+    def authenticate_user_from_token!
+      if @current_user
+        sign_in @current_user, store: false, bypass: true
+      else
+        return response_error(message: "Invalid token")
+      end
     end
 
-    def current_user
+    def load_user_by_token
       @current_user ||= User.find_by authentication_token: params[:auth_token]
     end
 
