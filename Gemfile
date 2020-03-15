@@ -20,7 +20,7 @@ gem 'devise-jwt'
 gem 'devise-async'
 gem 'dry-configurable', '0.9.0'
 
-gem 'rack-cors'
+gem "rack-cors", ">= 1.0.4"
 gem 'active_model_serializers'
 
 gem 'rolify', '5.2.0'
