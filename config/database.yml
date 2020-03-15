@@ -26,3 +26,5 @@ test:
 production:
   <<: *default
   database: iwa_production
+  username: <%= ENV['IWA_USERNAME'] %>
+  password: <%= ENV['IWA_DATABASE_PASSWORD'] %>
