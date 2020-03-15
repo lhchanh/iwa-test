@@ -11,7 +11,7 @@ class Question < ApplicationRecord
 
   def check_for_correct_answer
     unless options.collect {|f| f.correct?}.any?
-      errors.add(:options, 'at least one Option must be marked as the correct answer')
+      errors.add(:options, I18n.t('errors.messages.at_least_one_correct'))
       return false
     end
   end

@@ -13,7 +13,7 @@
           i.fa.fa-pencil
           | Edit
 
-      = link_to test_path(@test), method: :delete, data:{ confirm: 'Are you sure you want to delete this test?' } do
+      = link_to test_path(@test), method: :delete, data:{ confirm: I18n.t('confirm.delete_test') } do
         button.btn.btn-primary.button_icon
           i.fa.fa-trash
           | Delete

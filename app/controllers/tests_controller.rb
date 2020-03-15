@@ -12,7 +12,7 @@ class TestsController < AdminController
   def create
     @test = Test.new test_params
     if @test.save
-      flash[:notice] = 'Create the Test successfully'
+      flash[:notice] = I18n.t('success.messages.created_test')
       redirect_to tests_path
     else
       render :new
@@ -24,7 +24,7 @@ class TestsController < AdminController
 
   def update
     if @test.update test_params
-      flash[:notice] = 'Update successfully'
+      flash[:notice] = I18n.t('success.messages.updated_test')
       redirect_to tests_path
     else
       render :edit

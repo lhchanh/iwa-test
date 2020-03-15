@@ -19,14 +19,14 @@
       .col-sm-2.col-form-label.col-form-label-sm
         = test_form.label :name
       .col-sm-10
-        = test_form.text_field :name, class: 'form-control', placeholder: 'Give the Test a name here ...'
+        = test_form.text_field :name, class: 'form-control', placeholder: I18n.t('placeholder.test.name')
         - if test_form.object.errors[:name].any?
           span.error= test_form.object.errors[:name].join(', ')
     .form-group.row
       .col-sm-2.col-form-label.col-form-label-sm
         = test_form.label :description
       .col-sm-10
-        = test_form.text_area :description, class: 'form-control', placeholder: 'Enter a description here ...'
+        = test_form.text_area :description, class: 'form-control', placeholder: I18n.t('placeholder.test.description')
         - if test_form.object.errors[:description].any?
           span.error= test_form.object.errors[:description].join(', ')
     hr

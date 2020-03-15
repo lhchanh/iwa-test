@@ -4,17 +4,15 @@ class Api::V1::Auth::LoginController < Devise::SessionsController
   include Api::V1::Concerns::Users
 
   def_param_group :user do
-    param :user, Hash, :required => true, :action_aware => true do
-      param :email, String, "Email for login", required: true
-      param :password, String, "Password for login", required: true
-    end
+    param :email, String, "Email for login", required: true
+    param :password, String, "Password for login", required: true
   end
 
   api :POST, '/v1/auth/login', "Login user"
   formats ['json']
   param_group :user, required: true
   def create
-    command = AuthenticateUser.call(user_params[:email], user_params[:password])
+    command = AuthenticateUser.call(params[:email], params[:password])
     if command.success?
       sign_in command.result, store: false
       response_success(command.result)
@@ -35,12 +33,6 @@ class Api::V1::Auth::LoginController < Devise::SessionsController
     else
       response_error
     end
-  end
-
-  private
-
-  def user_params
-    params.require(:user).permit :email, :password, :authentication_token
   end
 
 end

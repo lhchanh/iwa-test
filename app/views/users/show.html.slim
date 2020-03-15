@@ -13,7 +13,7 @@
           i.fa.fa-pencil
           | Edit
 
-      = link_to user_path(@user), method: :delete, data:{ confirm: 'Are you sure you want to delete this user?' } do
+      = link_to user_path(@user), method: :delete, data:{ confirm: I18n.t('confirm.delete_user') } do
         button.btn.btn-primary.button_icon
           i.fa.fa-trash
           | Delete

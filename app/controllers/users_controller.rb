@@ -18,12 +18,8 @@ class UsersController < AdminController
   end
 
   def update
-    success = is_change_password? ?
-      @user.update_with_password(user_params) :
-      @user.update_without_password(user_params)
-
-    if success
-      flash[:notice] = 'Update successfully'
+    if @user.update_without_password(user_params)
+      flash[:notice] = I18n.t('success.messages.updated_user')
       redirect_to users_path
     else
       render :edit
@@ -33,7 +29,7 @@ class UsersController < AdminController
   def create
     @user = User.new(user_params)
     if @user.save
-      flash[:notice] = 'Create successfully'
+      flash[:notice] = I18n.t('success.messages.created_user')
       redirect_to users_path
     else
       render :new
@@ -59,9 +55,5 @@ class UsersController < AdminController
     params.require(:user).permit(
       :name, :email, :type, :password, :password_confirmation, :current_password
     )
-  end
-
-  def is_change_password?
-    user_params[:password].present? || user_params[:password_confirmation].present?
   end
 end
