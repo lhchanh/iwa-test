@@ -16,4 +16,14 @@ class User < ApplicationRecord
   def admin?
     is_a? Teacher
   end
+
+  def generate_token!
+    token = nil
+    loop do
+      token = Devise.friendly_token
+      break token unless User.where(authentication_token: token).exists?
+    end
+    token
+    update! authentication_token: token
+  end
 end
