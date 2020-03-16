@@ -1,6 +1,6 @@
 class QuestionSerializer < ActiveModel::Serializer
-  attributes :id, :label, :description
-
-  belongs_to :test
-  has_many :options
+  attributes :id, :label, :test_id, :description, :options
+  def options
+    ActiveModel::SerializableResource.new(object.options,  each_serializer: OptionSerializer)
+  end
 end

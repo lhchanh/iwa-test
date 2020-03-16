@@ -1,25 +1,28 @@
 module Api
   class ApplicationController < ActionController::API
     include Api::V1::Concerns::Users
-
-    PER_PAGE_DEFAULT = 10
-
-    before_action :ensure_params_token
+    before_action :ensure_param_token
     before_action :load_user_by_token
     before_action :authenticate_user_from_token!
     before_action :authenticate_user!
 
+    PER_PAGE_DEFAULT = 10
+
     private
 
-    def ensure_params_token
-      return response_error(message: "Invalid token") if params[:auth_token].blank?
+    def ensure_param_token
+      if params[:auth_token].blank?
+        auth_error = { auth: [I18n.t('errors.messages.missing_or_invalid_token')]}
+        render ResponseConcern.make_render_options(401, auth_error)
+      end
     end
 
     def authenticate_user_from_token!
       if @current_user
-        sign_in @current_user, store: false, bypass: true
+        bypass_sign_in(@current_user)
       else
-        return response_error(message: "Invalid token")
+        auth_error = { auth: [I18n.t('errors.messages.missing_or_invalid_token')]}
+        render ResponseConcern.make_render_options(401, auth_error)
       end
     end
 

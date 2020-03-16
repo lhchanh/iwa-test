@@ -5,7 +5,8 @@ en:
       invalid_email_format: is not valid email address
       authenticate_fail: Your email address or password is incorrect
       invalid_token: Invalid token
-      missing_token: Missing token
+      missing_or_invalid_token: Missing or Invalid token
+      missing_login_params: Missing email address or password
       not_authorized: Not Authorized
       not_authorized_to_access: You are not authorized to access this page.
       at_least_one_correct: at least one Option must be marked as the correct answer
