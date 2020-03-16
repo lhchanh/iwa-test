@@ -1,24 +1,33 @@
-# README
+# IWA - TEST
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Support APIs for Mobile app
+Support Admin manage User/Test
 
-Things you may want to cover:
+## Pre-Installation
 
-* Ruby version
+## Installation
 
-* System dependencies
+- Clone the respository - `git clone git@github.com:lhchanh/iwa-test.git`
+- Install libraries - `bundle install`
+- Configure database - `config/database.yml`
+- Create database - `rails db:create`
+- Migrate database - `rails db:migrate`
+- Seed database - `rails db:seed`
 
-* Configuration
+## Application Structure
 
-* Database creation
+- _https://frozen-ravine-48456.herokuapp.com/_ - web administration interface
+- _https://frozen-ravine-48456.herokuapp.com/api/v1/auth/login_ - api endpoints for Mobile app
 
-* Database initialization
+## Demo:
 
-* How to run the test suite
+- https://frozen-ravine-48456.herokuapp.com/
 
-* Services (job queues, cache servers, search engines, etc.)
+## API Documentation
 
-* Deployment instructions
+- https://frozen-ravine-48456.herokuapp.com/api_docs
 
-* ...
+## Github Repo
+
+- https://github.com/lhchanh/iwa-test
+- branch: master
