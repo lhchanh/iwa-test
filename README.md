@@ -26,6 +26,7 @@ Support Admin manage User/Test
 ## API Documentation
 
 - https://frozen-ravine-48456.herokuapp.com/api_docs
+- Sample Data for Postman: https://www.getpostman.com/collections/cb8d909461e489bad2ed
 
 ## Github Repo
 

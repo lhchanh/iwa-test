@@ -54,7 +54,7 @@ class Api::V1::TestsController < Api::ApplicationController
        ...
       ]'
   def index
-    tests = Test.joins(questions: :options).includes(:questions).page(page).per(per_page)
+    tests = Test.joins(questions: :options).includes(questions: :options).page(page).per(per_page).uniq
     render json: tests, status: :ok
   end
 
